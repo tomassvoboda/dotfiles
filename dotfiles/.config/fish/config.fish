@@ -1,9 +1,5 @@
 abbr -a e nvim
 
-if status --is-interactive
-	tmux ^ /dev/null; and exec true
-end
-
 if command -v exa > /dev/null
 	abbr -a l 'exa'
 	abbr -a ls 'exa'
@@ -15,6 +11,10 @@ else
 	abbr -a lll 'ls -la'
 end
 
+if status --is-interactive
+	tmux ^ /dev/null; and exec true
+end
+
 set fish_greeting
 
 set PATH ~/.config/bin ~/.local/bin $PATH
@@ -22,6 +22,9 @@ set PATH ~/.config/bin ~/.local/bin $PATH
 # Exa settings
 setenv TIME_STYLE long-iso
 setenv EXA_COLORS da=37
+
+setenv EDITOR nvim
+setenv LESS "-F -X -R"
 
 # Base16 Shell
 if status --is-interactive
