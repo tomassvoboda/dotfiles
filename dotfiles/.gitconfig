@@ -1,0 +1,28 @@
+[user]
+	name = Tomáš Svoboda
+	email = tomassvoboda@posteo.net
+[github]
+	user = tomassvoboda
+[protocol]
+	version = 2
+[core]
+	excludesfile = ~/.gitignore_global
+	autocrlf = input
+	safecrlf = true
+	editor = vim
+	commitGraph = true
+[color]
+	ui = true
+[log]
+	date = iso-local
+[alias]
+	c = commit
+	s = status --short
+	st = status
+
+	lg = log --oneline --decorate --all --graph
+	last = log -1 HEAD
+	f = push --force-with-lease
+	sl = stash list
+[push]
+	default = simple

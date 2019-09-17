@@ -1,0 +1,11 @@
+# The pulse folder cannot be a symbolic link, because PulseAudio then doesn't start.
+# Related bug report here: https://gitlab.freedesktop.org/pulseaudio/pulseaudio/issues/624
+#                          https://gitlab.freedesktop.org/pulseaudio/pulseaudio/issues/242
+
+.include /etc/pulse/default.pa
+
+.ifexists module-switch-on-connect.so
+load-module module-switch-on-connect
+.endif
+
+set-default-sink "alsa_output.usb-NAD_Electronics_NAD_USB_Audio-00.iec958-stereo"

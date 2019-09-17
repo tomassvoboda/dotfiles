@@ -1,0 +1,86 @@
+# beets settings
+# ------------------------------------------------------------------------------
+
+# global options
+directory: ~/Data/Music
+library: ~/Data/Music/.metadata/beets/library.db
+replace:
+        '[\\/]': _              # remove /, \
+        '^\.': _                # remove leading dots
+        '[\x00-\x1f]': _        # remove control characters
+        '[<>:"\?\*\|]': _       # remove Windows reserved characters
+        '\.$': _                # remove trailing dots
+        '\s+$': ''              # remove trailing whitespace
+        '^\s+': ''
+original_date: yes              # date always set to the date of the first release
+per_disc_numbering: yes         # numbering style on multi-disk releases
+
+# UI options
+# ------------------------------------------------------------------------------
+ui:
+        color: yes
+        colors:
+                text_success: green
+                text_warning: yellow
+                text_error: red
+                text_highlight: darkgreen
+                text_highlight_minor: lightgray
+                action_default: turquoise
+                action: blue
+
+# import options
+# ------------------------------------------------------------------------------
+import:
+        write: yes              # metadata is written to files
+        copy: yes               # files are copied to library directory
+        resume: no              # interrupted imports are not resumed
+        incremental: yes        # import only new files in directory
+        timid: yes              # ask for confirmation on every auto-tagging match
+        log: ~/Data/Music/.metadata/beets/import.log
+        languages: en           # prefer english translations of names
+
+match:
+    preferred:
+        countries: ['XE', 'US', 'GB|UK']
+        media: ['CD', 'Digital Media|File']
+
+# path format configuration
+# ------------------------------------------------------------------------------
+paths:
+        default: %asciify{$albumartist}/%asciify{$album}%aunique{albumartist album, year label catalognum albumdisambig}/$disc-$track - %asciify{$title}
+
+# plugin options
+# ------------------------------------------------------------------------------
+# ftintitle     - featured artists are in song title
+# replaygain    - normalizes audio playback levels
+# scrub         - remove all tags that are not tracked by beets
+# zero          - clear fields in metadata tags
+# mpdupdate     - update MPD library after changes
+# info          - print file metadata
+# convert       - export transcoded audio to a different directory
+
+plugins: mbsync ftintitle replaygain scrub zero mpdupdate info convert
+ftintitle:
+        format: (featuring {0})
+replaygain:
+        overwrite: yes
+        backend: gstreamer
+zero:
+        fields: month day genre comments images
+mpd:
+        host: localhost
+        port: 6600
+convert:
+        dest: ~/Data/Music - opus
+        paths:
+                default: %asciify{$albumartist} - %asciify{$album} ($year) [opus 128k]/$disc-$track - %asciify{$title}
+        copy_album_art: yes
+        embed: no
+        format: opus
+        formats:
+                mp3:
+                        command: ffmpeg -i $source -vn -aq 0 $dest
+                        extension: mp3
+                opus:
+                        command: ffmpeg -n -i $source -vn -acodec libopus -b 128k $dest
+                        extension: ogg

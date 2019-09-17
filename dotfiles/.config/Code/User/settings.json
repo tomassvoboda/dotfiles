@@ -1,0 +1,52 @@
+{
+    // Editor
+    "window.menuBarVisibility": "toggle",
+    "editor.fontFamily": "iosevka",
+    "editor.fontWeight": "500",
+    "editor.fontLigatures": true,
+    "editor.wordWrap": "on",
+    "files.trimTrailingWhitespace": true,
+    "editor.autoClosingBrackets": "beforeWhitespace",
+    "editor.renderWhitespace": "boundary",
+    "editor.tabCompletion": "on",
+    "editor.suggest.localityBonus": true,
+    "editor.formatOnSave": true,
+    "editor.wordBasedSuggestions": false,
+    // Minimap
+    "editor.minimap.showSlider": "always",
+    "editor.minimap.renderCharacters": false,
+    // Terminal
+    "workbench.panel.defaultLocation": "right",
+    "terminal.integrated.shell.linux": "/bin/fish",
+    "terminal.integrated.fontFamily": "iosevka",
+    // --------------- Extensions ---------------
+    // Trailing Spaces
+    "trailing-spaces.highlightCurrentLine": false,
+    // Python
+    "python.pythonPath": "/usr/bin/python3",
+    "python.linting.pylintArgs": [
+        "--disable=missing-docstring"
+    ],
+    // Latex
+    "latex-workshop.latex.autoClean.run": "onBuilt",
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.intellisense.package.enabled": true,
+    "latex-workshop.message.update.show": false,
+    "latex-workshop.message.error.show": false,
+    "latex-workshop.message.warning.show": false,
+    // C/C++
+    "C_Cpp.clang_format_fallbackStyle": "{BasedOnStyle: Chromium, IndentWidth: 4, BreakBeforeBraces: Linux, IndentCaseLabels: false}",
+    "C_Cpp.default.cStandard": "c99",
+    "C_Cpp.default.cppStandard": "c++17",
+    "cSpell.userWords": [
+        "Codomain",
+        "concat",
+        "foldl",
+        "foldr",
+        "subsequence"
+    ],
+    "diffEditor.ignoreTrimWhitespace": false,
+    // Haskell
+    "languageServerHaskell.useCustomHieWrapper": true,
+    "languageServerHaskell.useCustomHieWrapperPath": "hie-wrapper",
+}
